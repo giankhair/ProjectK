@@ -1,0 +1,59 @@
+{%extends "macros/main-layout.html"%}
+{%block content%}
+<div>
+  <div class="modal-dialog">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Anggota</h1>
+        <a
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></a>
+      </div>
+      <form method="post">
+        {{ form.hidden_tag()}}
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                {{ form.tanggal_keluar(class="form-control", value=data.tanggal_keluar) }}
+                {{ form.tanggal_keluar.label(class="form-label", for="floatingInput") }}
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.nama_barang(class="form-control", value=data.nama_barang) }}
+                {{ form.nama_barang.label(class="form-label", for="floating") }}
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.satuan(class="form-control", value=data.satuan) }}
+                {{ form.satuan.label(class="form-label", for="floating") }}
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.qty(class="form-control", value=data.qty) }}
+                {{ form.qty.label(class="form-label", for="floating") }}
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.harga_jual(class="form-control", value=data.harga_jual) }}
+                {{ form.harga_jual.label(class="form-label", for="floating") }}
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.customer(class="form-control", value=data.customer) }}
+                {{ form.customer.label(class="form-label", for="floating") }}
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.pembayaran(class="form-control", value=data.pembayaran) }}
+                {{ form.pembayaran.label(class="form-label", for="floating") }}
+            </div>
+            <div class="form-floating mb-3">
+                {{ form.keterangan(class="form-control", value=data.keterangan) }}
+                {{ form.keterangan.label(for="floating") }}
+            </div>                                
+        </div>
+      <div class="modal-footer">
+        <a href="{{url_for('pages.barang_out')}}" type="button" class="btn btn-info" data-bs-dismiss="modal">
+          Kembali
+        </a>
+        {{form.submit(class="btn btn-primary")}}
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+{%endblock%}

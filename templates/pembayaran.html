@@ -1,0 +1,38 @@
+{%extends "macros/main-layout.html" %} {% block content%}
+<div class="container-fluid pt-4 px-4">
+  <div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+      <h6 class="mb-4">Responsive Table</h6>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Nama Barang</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Pembayaran</th>
+              <th scope="col">Keterangan</th>
+              <th scope="col">Total Pembayaran</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in data%}
+            <tr>
+              <th scope="row">{{ loop.index }}</th>
+              <td>{{ i.tanggal_keluar }}</td>
+              <td>{{ i.nama_barang }}</td>
+              <td>{{ i.customer }}</td>
+              <td>{{ i.pembayaran }}</td>
+              <td>{{ i.keterangan }}</td>
+              <td>{{ "{:,.0f}".format(i.qty * i.harga_jual) }}</td>
+            </tr>
+            {% endfor%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

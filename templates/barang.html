@@ -1,0 +1,113 @@
+{%extends "macros/main-layout.html" %} {% block content%}
+
+<!-- Modal -->
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Barang</h1>
+        <a
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></a>
+      </div>
+      <form method="post">
+        {{ form.hidden_tag()}}
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            {{ form.nama_barang(class="form-control", id="floatingInput") }}
+            {{ form.nama_barang.label(class="form-label", for="floatingInput") }}
+          </div>
+          <div class="form-floating mb-3">
+              {{ form.satuan(class="form-control", id="floating") }}
+              {{ form.satuan.label(class="form-label", for="floating") }}
+          </div>
+          <div class="form-floating mb-3">
+              {{ form.harga_beli(class="form-control", id="floating") }}
+              {{ form.harga_beli.label(class="form-label", for="floating") }}
+          </div>
+          <div class="form-floating mb-3">
+              {{ form.harga_jual(class="form-control", id="floating") }}
+              {{ form.harga_jual.label(class="form-label", for="floating") }}
+          </div>
+          <div class="form-floating mb-3">
+              {{ form.stok_awal(class="form-control", id="floating") }}
+              {{ form.stok_awal.label(class="form-label", for="floating") }}
+          </div>
+          <div class="form-floating mb-3">
+              {{ form.keterangan(class="form-control", id="floating") }}
+              {{ form.keterangan.label(class="form-label", for="floating") }}
+          </div>      
+        </div>
+      
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-bs-dismiss="modal">
+          Close
+        </button>
+        {{form.submit(class="btn btn-primary")}}
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+  <button type="button" class="btn btn-primary rounded-pill m-2 mb-3"  
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal">
+    Tambah Barang
+  </button>
+  <div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+      <h6 class="mb-4">Responsive Table</h6>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama Barang</th>
+              <th scope="col">Satuan</th>
+              <th scope="col">Harga Beli</th>
+              <th scope="col">Harga Jual</th>
+              <th scope="col">Stok Awal</th>
+              <th scope="col">Keterangan</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in data %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ i.nama_barang }}</td>
+                <td>{{ i.satuan }}</td>
+                <td>{{ i.harga_beli }}</td>
+                <td>{{ i.harga_jual }}</td>
+                <td>{{ i.stok_awal }}</td>
+                <td>{{ i.keterangan }}</td>
+                <td>
+                  <a href="{{ url_for('pages.editBarang', _id=i.id) }}" class="btn btn-square btn-outline-success">
+                    <i class="fa fa-pen">
+                    </i>
+                  </a>
+                  <a href="{{ url_for('pages.deleteBarang', _id=i.id) }}" class="btn btn-square btn-outline-primary m-2">
+                    <i class="fa fa-eraser"></i>
+                  </a>
+  
+                </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

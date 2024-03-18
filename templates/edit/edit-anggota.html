@@ -1,0 +1,57 @@
+{%extends "macros/main-layout.html"%}
+{%block content%}
+<div>
+  <div class="modal-dialog">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Anggota</h1>
+        <a
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></a>
+      </div>
+      <form method="post">
+        {{ form.hidden_tag()}}
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            {{form.kode_anggota(class="form-control", value=data.kode_anggota)}}
+            {{form.kode_anggota.label(class="form-label",for="floatingInput")}}
+            
+          </div>
+          <div class="form-floating mb-3">
+            {{form.nama_anggota(class="form-control", value=data.nama_anggota)}}
+            {{form.nama_anggota.label(class="form-label",for="floating")}}
+            
+          </div>
+          <div class="form-floating mb-3">
+            {{form.status(class="form-control", value=data.status)}}
+            {{form.status.label(class="form-label",for="floating")}}
+            
+          </div>
+          <div class="form-floating mb-3">
+            {{form.nik(class="form-control", value=data.nik)}}
+            {{form.nik.label(class="form-label",for="floating")}}
+            
+          </div>
+          <div class="form-floating mb-3">
+            {{form.bidang(class="form-control", value=data.bidang)}}
+            {{form.bidang.label(class="form-label",for="floating")}}
+            
+          </div>
+          <div class="form-floating mb-3">
+            {{form.keterangan(class="form-control", value=data.keterangan)}}
+            {{form.keterangan.label(for="floating")}}
+            
+          </div>
+        </div>
+      <div class="modal-footer">
+        <a href="{{url_for('pages.anggota')}}" class="btn btn-info" data-bs-dismiss="modal">
+          Kembali
+        </a>
+        {{form.submit(class="btn btn-primary")}}
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+{%endblock%}
